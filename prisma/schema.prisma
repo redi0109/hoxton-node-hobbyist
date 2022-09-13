@@ -15,7 +15,7 @@ model User {
   fullName String
   photo    String?  @unique
   email    String  @unique
-  hobbys   Hobby[]
+  hobbies   Hobby[]
 }
 
 model Hobby {
