@@ -13,9 +13,9 @@ datasource db {
 model User {
   id       Int     @id
   fullName String
-  photo    String?  @unique
+  photo    String? @unique
   email    String  @unique
-  hobbies   Hobby[]
+  hobbies  Hobby[]
 }
 
 model Hobby {
@@ -23,6 +23,5 @@ model Hobby {
   name   String
   image  String?
   active Boolean
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int
+  users  User[]
 }

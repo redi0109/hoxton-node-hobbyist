@@ -10,8 +10,6 @@ const port = 4000;
 app.use(cors());
 app.use(express.json());
 
-
-
 //users
 app.get("/users", async (req, res) => {
   const users = await prisma.user.findMany({ include: { hobbies: true } });
@@ -57,9 +55,6 @@ app.delete("/users/:id", async (req, res) => {
   res.send(user);
 });
 
-
-
-
 //hobbies
 app.get("/hobbies", async (req, res) => {
   const hobbies = await prisma.hobby.findMany({ include: { user: true } });
@@ -80,12 +75,12 @@ app.get("/hobbies/:id", async (req, res) => {
 });
 
 app.post("/hobbies", async (req, res) => {
-    const hobby = await prisma.hobby.create({
-      data: req.body,
-      include: { user: true },
-    });
-    res.send(hobby);
+  const hobby = await prisma.hobby.create({
+    data: req.body,
+    include: { user: true },
   });
+  res.send(hobby);
+});
 
 app.patch("/hobbies/:id", async (req, res) => {
   const id = Number(req.params.id);
